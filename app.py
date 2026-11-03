@@ -36,8 +36,8 @@ BASE_DE_ERRORES = [
             "El campo enviado supera el límite permitido por el estándar de la DIAN (máximo 10 caracteres)."
         ),
         "solucion": (
-            "1. Notificar al proceso de Cartera."
-            "2. Corregir el código postal en el maestro de cliente en el ERP."
+            "1. Notificar al proceso de Cartera.\n"
+            "2. Corregir el código postal en el maestro de cliente en el ERP.\n"
             "3. Gegenerar el archivo plano nuevamente y retransmitir.\n"
         ),
         "Proceso": "Proceso de Cartera",
