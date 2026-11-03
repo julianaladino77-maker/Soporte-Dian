@@ -26,13 +26,14 @@ BASE_DE_ERRORES = [
     {
         "palabras_clave": [
             "codigo postal",
+            "código postal",
             "adq-14",
             "dfa-3",
             "postalzone",
         ],
         "titulo": "Error de longitud en el Código Postal",
         "causa": (
-            "El campo enviado supera el límite permitido por el estándar de la DIAN (máximo 10 caracteres)."
+            "El campo enviado supera el límite permitido por el estándar de la DIAN (máximo 10 caracteres).\n"
         ),
         "solucion": (
             "1. Notificar al proceso de Cartera.\n"
