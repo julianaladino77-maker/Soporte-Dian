@@ -33,11 +33,11 @@ BASE_DE_ERRORES = [
         ],
         "titulo": "Error de longitud en el Código Postal",
         "causa": (
-            "El campo enviado supera el límite permitido por el estándar de la DIAN (máximo 10 caracteres).\n"
+            "El campo enviado supera el límite permitido por el estándar de la DIAN (máximo 10 caracteres)."
         ),
         "solucion": (
-            "1. Notificar al proceso de Cartera.\n"
-            "2. Corregir el código postal en el maestro de cliente en el ERP.\n"
+            "1. Notificar al proceso de Cartera."
+            "2. Corregir el código postal en el maestro de cliente en el ERP."
             "3. Gegenerar el archivo plano nuevamente y retransmitir.\n"
         ),
         "Proceso": "Proceso de Cartera",
@@ -92,7 +92,7 @@ if st.button("Diagnosticar Error", type="primary"):
         error_encontrado = True
         st.error(f"❌ **Causa del Rechazo:** {item['titulo']}")
         st.markdown(f"""
-                * **Detalle / Causa:\n2** {item['causa']}
+                * **Detalle / Causa:\n** {item['causa']}
                 * **💡 Solución Técnica:\n** 
                   {item['solucion']}
                 * **👥 A quién notificar:** {item['Proceso']}
