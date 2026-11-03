@@ -37,23 +37,24 @@ BASE_DE_ERRORES = [
         ),
         "solucion": (
             "1. Notificar al proceso de Cartera.\n"
-            "2. Corregir el código postal en el maestro de cliente en el ERP.\n"
+            "2. Corregir el código postal en el maestro de clientes en el ERP.\n"
             "3. Gegenerar el archivo plano nuevamente y retransmitir.\n"
         ),
-        "Proceso": "Proceso de Cartera",
+        "proceso": "Proceso de Cartera",
     },
     {
         "palabras_clave": ["nit", "digito de verificacion", "dv"],
         "titulo": "Error en el NIT o Dígito de Verificación",
         "causa": (
-            "El NIT o el DV reportado no coincide con los registros del"
-            " prevalidador de la DIAN."
+            "El NIT o el DV reportado no coincide con los registros del prevalidador de la DIAN."
         ),
         "solucion": (
-            "1. Validar el RUT actualizado del cliente o emisor.\n2. Actualizar"
-            " el dato maestro en el sistema y reintentar el envío."
+            "1. Notificar al proceso de Cartera.\n"
+            "2. Corregir el NIT en el maestro de clientes en el sistema ERP.\n"
+            "3. Corregir el documento electrónico con el NIT corregido\n"
+            "4. Gegenerar el archivo plano nuevamente y retransmitir."
         ),
-        "Proceso": "Área Comercial / Cartera",
+        "proceso": "Proceso de Cartera",
     },
     # -----------------------------------------------------------------
     # 👇 PARA AGREGAR UN NUEVO ERROR, SOLO COPIA Y PEGA UN BLOQUE COMO ESTE:
@@ -95,7 +96,7 @@ if st.button("Diagnosticar Error", type="primary"):
                  **Detalle / Causa:** {item['causa']}
                  **💡 Solución Técnica:** 
                   {item['solucion']}
-                 **👥 A quién notificar:** {item['Proceso']}
+                 **👥 A quién notificar:** {item['proceso']}
                 """)
         break  # Detiene la búsqueda al encontrar el primer match
 
