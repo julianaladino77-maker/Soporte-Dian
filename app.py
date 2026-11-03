@@ -39,7 +39,7 @@ BASE_DE_ERRORES = [
             "2. Corregir el código postal en el maestro de cliente en el ERP.\n"
             "3. Gegenerar el archivo plano nuevamente y retransmitir.\n"
         ),
-        "area": "Proceso de Cartera",
+        "Proceso": "Proceso de Cartera",
     },
     {
         "palabras_clave": ["nit", "digito de verificacion", "dv"],
@@ -52,7 +52,7 @@ BASE_DE_ERRORES = [
             "1. Validar el RUT actualizado del cliente o emisor.\n2. Actualizar"
             " el dato maestro en el sistema y reintentar el envío."
         ),
-        "area": "Área Comercial / Cartera",
+        "Proceso": "Área Comercial / Cartera",
     },
     # -----------------------------------------------------------------
     # 👇 PARA AGREGAR UN NUEVO ERROR, SOLO COPIA Y PEGA UN BLOQUE COMO ESTE:
