@@ -7,8 +7,8 @@ st.set_page_config(
 
 st.title("🧾 Asistente de Errores - Facturación Electrónica DIAN")
 st.write(
-    "Pega la traza del error o el texto del log para identificar la causa,"
-    " solución y área a notificar."
+    "Pega el código del rechazo o el texto del error para identificar la causa,"
+    "solución y proceso a notificar."
 )
 
 # =====================================================================
@@ -32,15 +32,14 @@ BASE_DE_ERRORES = [
         ],
         "titulo": "Error de longitud en el Código Postal",
         "causa": (
-            "El campo enviado supera el límite permitido por el estándar de la"
-            " DIAN (máximo 10 caracteres)."
+            "El campo enviado supera el límite permitido por el estándar de la DIAN (máximo 10 caracteres)."
         ),
         "solucion": (
-            "1. Notificar al proceso de Cartera/Datos Maestros.\n2. Corregir"
-            " el código postal en la ficha del cliente en el ERP.\n3."
-            " Regenerar el archivo plano y retransmitir."
+            "1. Notificar al proceso de Cartera.\n"
+            "2. Corregir el código postal en el maestro de cliente en el ERP.\n"
+            "3. Gegenerar el archivo plano nuevamente y retransmitir.\n"
         ),
-        "area": "Área de Cartera",
+        "area": "Proceso de Cartera",
     },
     {
         "palabras_clave": ["nit", "digito de verificacion", "dv"],
@@ -92,10 +91,10 @@ if st.button("Diagnosticar Error", type="primary"):
         error_encontrado = True
         st.error(f"❌ **Causa del Rechazo:** {item['titulo']}")
         st.markdown(f"""
-                * **Detalle / Causa:** {item['causa']}
-                * **💡 Solución Técnica:** 
+                * **Detalle / Causa:\n2** {item['causa']}
+                * **💡 Solución Técnica:\n** 
                   {item['solucion']}
-                * **👥 A quién notificar:** {item['area']}
+                * **👥 A quién notificar:** {item['Proceso']}
                 """)
         break  # Detiene la búsqueda al encontrar el primer match
 
