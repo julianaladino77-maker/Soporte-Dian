@@ -92,8 +92,8 @@ if st.button("Diagnosticar Error", type="primary"):
         error_encontrado = True
         st.error(f"❌ **Causa del Rechazo:** {item['titulo']}")
         st.markdown(f"""
-                * **Detalle / Causa:\n** {item['causa']}
-                * **💡 Solución Técnica:\n** 
+                * **Detalle / Causa:** {item['causa']}
+                * **💡 Solución Técnica:** 
                   {item['solucion']}
                 * **👥 A quién notificar:** {item['Proceso']}
                 """)
