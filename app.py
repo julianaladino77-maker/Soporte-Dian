@@ -58,16 +58,7 @@ BASE_DE_ERRORES = [
         ),
         "area": "Proceso de Cartera",
     },
-    # -----------------------------------------------------------------
-    # 👇 PARA AGREGAR UN NUEVO ERROR, SOLO COPIA Y PEGA UN BLOQUE COMO ESTE:
-    # -----------------------------------------------------------------
-    # {
-    #     "palabras_clave": ["nombre_del_error", "otro_codigo"],
-    #     "titulo": "Título de tu nuevo error",
-    #     "causa": "Explicación de por qué ocurre.",
-    #     "solucion": "Pasos para solucionarlo.",
-    #     "area": "Área encargada"
-    # },
+  
 ]
 
 # Campo de texto para que el equipo de TI pegue el log
@@ -88,16 +79,15 @@ if st.button("Diagnosticar Error", type="primary"):
 
     st.subheader("🔍 Diagnóstico del Sistema")
 
-    # Buscamos en nuestra base de errores cuál coincide con el log pegado
+    # Buscamos en nuestra base de errores cuál coincide con el error pegado
     for item in BASE_DE_ERRORES:
       # Si alguna de las palabras clave está dentro del log del usuario
       if any(keyword in log_lower for keyword in item["palabras_clave"]):
         error_encontrado = True
         st.error(f"❌ **Causa del Rechazo:** {item['titulo']}")
         st.markdown(f"""
-                * **Detalle / Causa:** {item['causa']}
-                * **💡 Solución Técnica:** 
-                  {item['solucion']}
+                * **📋 Detalle / Causa:** {item['causa']}
+                * **💡 Solución Técnica:** {item['solucion']}
                 * **👥 A quién notificar:** {item['area']}
                 """)
         break  # Detiene la búsqueda al encontrar el primer match
