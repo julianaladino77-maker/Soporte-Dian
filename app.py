@@ -63,7 +63,7 @@ BASE_DE_ERRORES = [
                 "2. Notificar al proceso de TI."
             ),
             "area": "Proceso de TI",
-        },
+        }
 ]
 
 # Campo de texto para que el equipo de TI pegue el log
