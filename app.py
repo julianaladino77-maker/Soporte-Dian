@@ -12,16 +12,8 @@ st.write(
 )
 
 # =====================================================================
-# AQUÍ PUEDES AGREGAR TODOS LOS ERRORES QUE QUIERAS MÁS ADELANTE
+# BASE DE DATOS DE ERRORES
 # =====================================================================
-# Cada error tiene:
-# - 'palabras_clave': palabras que el sistema buscará en el log.
-# - 'titulo': El título del error.
-# - 'causa': Qué significa el error.
-# - 'solucion': Los pasos para solucionarlo.
-# - 'area': A quién se debe notificar.
-# =====================================================================
-
 BASE_DE_ERRORES = [
     {
         "palabras_clave": [
@@ -37,9 +29,9 @@ BASE_DE_ERRORES = [
             " DIAN (máximo 10 caracteres)."
         ),
         "solucion": (
-            "1. Notificar al proceso de Cartera.\n2."
-            "Corregir el código postal en el maestro de clientes en el ERP.\n3."
-            "Generar el archivo plano nuevamente y retransmitir.\n"
+            "1. Notificar al proceso de Cartera.\n"
+            "2. Corregir el código postal en el maestro de clientes en el ERP.\n"
+            "3. Generar el archivo plano nuevamente y retransmitir."
         ),
         "area": "Proceso de Cartera",
     },
@@ -51,14 +43,13 @@ BASE_DE_ERRORES = [
             " prevalidador de la DIAN."
         ),
         "solucion": (
-            "1. Notificar al proceso de Cartera.\n2. "
-            "Corregir el NIT en el maestro de clientes en el sistema ERP.\n3. "
-            "Corregir el documento electrónico con el NIT corregido.\n4. "
-            "Generar el archivo plano nuevamente y retransmitir."
+            "1. Notificar al proceso de Cartera.\n"
+            "2. Corregir el NIT en el maestro de clientes en el sistema ERP.\n"
+            "3. Corregir el documento electrónico con el NIT corregido.\n"
+            "4. Generar el archivo plano nuevamente y retransmitir."
         ),
         "area": "Proceso de Cartera",
     },
-  
 ]
 
 # Campo de texto para que el equipo de TI pegue el log
@@ -81,16 +72,19 @@ if st.button("Diagnosticar Error", type="primary"):
 
     # Buscamos en nuestra base de errores cuál coincide con el error pegado
     for item in BASE_DE_ERRORES:
-      # Si alguna de las palabras clave está dentro del log del usuario
       if any(keyword in log_lower for keyword in item["palabras_clave"]):
         error_encontrado = True
         st.error(f"❌ **Causa del Rechazo:** {item['titulo']}")
-        st.markdown(f"""
-                * **📋 Detalle / Causa:** {item['causa']}
-                * **💡 Solución Técnica:** {item['solucion']}
-                * **👥 A quién notificar:** {item['area']}
-                """)
-        break  # Detiene la búsqueda al encontrar el primer match
+
+        # Usamos doble espacio o saltos limpios para que Markdown pinte cada línea aparte
+        st.markdown(f"* **📋 Detalle / Causa:** {item['causa']}")
+        st.markdown(f"* **💡 Solución Técnica:**")
+        # Imprimimos la solución respetando los saltos de línea de cada número
+        for linea in item["solucion"].split("\n"):
+          st.markdown(f"  {linea}")
+
+        st.markdown(f"* **👥 A quién notificar:** {item['area']}")
+        break
 
     # Si ningún error de la lista coincide
     if not error_encontrado:
