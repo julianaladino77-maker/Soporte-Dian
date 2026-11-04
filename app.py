@@ -8,7 +8,7 @@ st.set_page_config(
 st.title("🧾 Asistente de Errores - Facturación Electrónica DIAN")
 st.write(
     "Pega la traza del error o el texto del log para identificar la causa,"
-    " solución y proceso a notificar. J.L"
+    " solución y área a notificar."
 )
 
 # =====================================================================
@@ -54,7 +54,7 @@ BASE_DE_ERRORES = [
             #3. Referenciar Factura en Nota Crédito
             "palabras_clave": ["Cude de NC referenciada no existe", 
                                "Se requiere obligatoriamente referencia a documento",
-                                 "CBGC02", "CBGC04", "CBGC05"],
+                                 "cbgc02", "cbgc04", "cbgc05"],
             "titulo": "Nota Crédito no referenciada",
             "causa": (
                 "la nota crédito tiene una factura asociada sin el código cufe  "
