@@ -8,7 +8,7 @@ st.set_page_config(
 st.title("🧾 Asistente de Errores - Facturación Electrónica DIAN")
 st.write(
     "Pega la traza del error o el texto del log para identificar la causa,"
-    " solución y área a notificar."
+    " solución y proceso a notificar. J.L"
 )
 
 # =====================================================================
