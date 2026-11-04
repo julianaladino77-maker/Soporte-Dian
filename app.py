@@ -7,8 +7,8 @@ st.set_page_config(
 
 st.title("🧾 Asistente de Errores - Facturación Electrónica DIAN")
 st.write(
-    "Pega la traza del error o el texto del rechazo para identificar la causa,"
-    " solución y proceso a notificar."
+    "Pega la traza del error o el texto del log para identificar la causa,"
+    " solución y área a notificar."
 )
 
 # =====================================================================
@@ -16,9 +16,13 @@ st.write(
 # =====================================================================
 BASE_DE_ERRORES = [
     {
-        #1. Código Postal
-        "palabras_clave": ["codigo postal", "código postal", "adq-14",
-            "dfa-3", "postalzone"],
+        "palabras_clave": [
+            "codigo postal",
+            "código postal",
+            "adq-14",
+            "dfa-3",
+            "postalzone",
+        ],
         "titulo": "Error de longitud en el Código Postal",
         "causa": (
             "El campo enviado supera el límite permitido por el estándar de la"
@@ -32,7 +36,6 @@ BASE_DE_ERRORES = [
         "area": "Proceso de Cartera",
     },
     {
-        #2. Dígito de Verificación
         "palabras_clave": ["nit", "digito de verificacion", "dv"],
         "titulo": "Error en el NIT o Dígito de Verificación",
         "causa": (
@@ -47,7 +50,6 @@ BASE_DE_ERRORES = [
         ),
         "area": "Proceso de Cartera",
     },
-
     {
             #3. Referenciar Factura en Nota Crédito
             "palabras_clave": ["Cude de NC referenciada no existe", 
@@ -77,7 +79,7 @@ log_input = st.text_area(
 
 if st.button("Diagnosticar Error", type="primary"):
   if not log_input.strip():
-    st.warning("Por favor, pega una línea de error para analizar.")
+    st.warning("Por favor, pega un log de error para analizar.")
   else:
     log_lower = log_input.lower()
     error_encontrado = False
