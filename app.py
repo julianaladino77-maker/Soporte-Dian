@@ -52,9 +52,13 @@ BASE_DE_ERRORES = [
     },
     {
             #3. Referenciar Factura en Nota Crédito
-            "palabras_clave": ["Cude de NC referenciada no existe", 
-                               "Se requiere obligatoriamente referencia a documento",
-                                 "cbgc02", "cbgc04", "cbgc05"],
+            "palabras_clave": [
+            "cude de nc referenciada no existe",
+            "se requiere obligatoriamente referencia a documento",
+            "cbgc02",
+            "cbgc04",
+            "cbgc05",
+        ],
             "titulo": "Nota Crédito no referenciada",
             "causa": (
                 "la nota crédito tiene una factura asociada sin el código cufe  "
