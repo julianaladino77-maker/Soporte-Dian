@@ -69,7 +69,28 @@ BASE_DE_ERRORES = [
                 "2. Notificar al proceso de TI."
             ),
             "area": "Proceso de TI",
-        }
+        },
+    {
+        "palabras_clave": [
+            "fab11b",
+            "fab12b",
+            "fad05c",
+            "valor inicial del rango de numeracion",
+            "valor final del rango",
+            "superior al final del rango",
+        ],
+        "titulo": "Error en el rango o resolución de numeración",
+        "causa": (
+            "El valor inicial o final del rango de numeración informado no"
+            " corresponde a los rangos vigentes otorgados por la DIAN para el"
+            " emisor (o superó el final del rango)."
+        ),
+        "solucion": (
+            "1. Notificar al proceso contable para la actualización de resolución.\n"
+            "2. Generar el archivo plano nuevamente y retransmitir."
+        ),
+        "area": "Proceso Contable",
+    },    
 ]
 
 # Campo de texto para que el equipo de TI pegue el log
