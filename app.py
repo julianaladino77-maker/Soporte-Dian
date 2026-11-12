@@ -16,6 +16,7 @@ st.write(
 # =====================================================================
 BASE_DE_ERRORES = [
     {
+        #1. Código Postal
         "palabras_clave": [
             "codigo postal",
             "código postal",
@@ -35,8 +36,14 @@ BASE_DE_ERRORES = [
         ),
         "area": "Proceso de Cartera",
     },
+    
     {
-        "palabras_clave": ["nit", "digito de verificacion", "dv"],
+         #2. Nit Incorrecto
+        "palabras_clave": [
+            "nit", 
+            "digito de verificacion",
+            "dv"
+        ],
         "titulo": "Error en el NIT o Dígito de Verificación",
         "causa": (
             "El NIT o el DV reportado no coincide con los registros del"
@@ -51,8 +58,8 @@ BASE_DE_ERRORES = [
         "area": "Proceso de Cartera",
     },
     {
-            #3. Referenciar Factura en Nota Crédito
-            "palabras_clave": [
+        #3. Referenciar Factura en Nota Crédito
+        "palabras_clave": [
             "cude de nc referenciada no existe",
             "se requiere obligatoriamente referencia a documento",
             "cbgc02",
@@ -71,6 +78,7 @@ BASE_DE_ERRORES = [
             "area": "Proceso de TI",
         },
     {
+        #4. Actualización Resolución
         "palabras_clave": [
             "fab11b",
             "fab12b",
@@ -91,6 +99,47 @@ BASE_DE_ERRORES = [
         ),
         "area": "Proceso Contable",
     },    
+
+    {       #5. Valor de Tributo
+           "palabras_clave": [
+            "fat02",
+            "valor total de un tributo no corresponde",
+        ],
+        "titulo": "Rechazo FAT02: Error en el valor total de tributos y retenciones",
+        "causa": (
+            "La factura cuenta con tres tipos de retenciones, y por ahora el"
+            " sistema está parametrizado con dos tipos de retenciones no más."
+        ),
+        "solucion": (
+            "1. Notificar al proceso de T.I.\n"
+            "2. Adicionar el otro tipo de retención en el sistema.\n"
+            "3. Volver a generar el archivo plano y retransmitir."
+        ),
+        "area": "Proceso de T.I.",
+    },
+    {   #5. Partida Arancelaria IAE
+        "palabras_clave": [
+            "iae",
+            "iae 1",
+            "iae 2",
+            "código del producto de acuerdo con el estándar descrito en el campo iae_2",
+            "partida arancelaria",
+            "documento del exterior",
+        ],
+        "titulo": "Falta de partida arancelaria (Campo IAE) en documento del exterior",
+        "causa": (
+            "El documento es del exterior y el sistema exige en el campo IAE"
+            " la partida arancelaria, por lo que el código del producto se"
+            " vuelve obligatorio."
+        ),
+        "solucion": (
+            "1. Hablar con el asesor de zona exterior para que actualice el"
+            " maestro con las partidas arancelarias correspondientes.\n"
+            "2. Volver a generar el insumo (archivo plano).\n"
+            "3. Retransmitir la factura."
+        ),
+        "area": "Asesor de Zona Exterior / Cartera",
+    },
 ]
 
 # Campo de texto para que el equipo de TI pegue el log
