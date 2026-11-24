@@ -1,6 +1,14 @@
 [theme]
 base = "light"
-primaryColor = "#0B5CAD"
+
+# Verde corporativo (botones, enlaces y elementos activos)
+primaryColor = "#1B8A3C"
+
+# Fondo de la página
 backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#EEF4FB"
+
+# Fondo de las cajas y de la barra lateral (verde muy suave)
+secondaryBackgroundColor = "#EAF5EC"
+
+# Color del texto
 textColor = "#1F2933"
