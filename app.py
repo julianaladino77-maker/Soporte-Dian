@@ -125,6 +125,115 @@ BASE_DE_ERRORES = [
         ),
         "area": "Asesor de Zona Exterior",
     },
+    {  # 7. Nota crédito sobre factura ya aceptada
+        "palabras_clave": [
+            "lgc15",
+            "cbf03a",
+            "no es posible la transmision de una nota credito",
+            "notas credito no puede anular facturas",
+        ],
+        "titulo": "Rechazo LGC15: Nota crédito sobre una factura ya aceptada",
+        "causa": (
+            "La nota crédito referencia una factura que ya está aceptada por"
+            " la DIAN y fue creada con causal de anulación, lo cual no es"
+            " permitido."
+        ),
+        "solucion": (
+            "1. Verificar que la factura referenciada en la nota crédito no esté"
+            " aceptada por la DIAN.\n"
+            "2. Si ya está aceptada, la nota no puede ir con causal de anulación:"
+            " debe ir como descuento y sin referenciar la factura.\n"
+            "3. Notificar al proceso de Contabilidad para que modifique la nota"
+            " y cambie el causal de anulación.\n"
+            "4. Facturación debe quitar la referencia de la factura, volver a"
+            " generar el archivo plano y retransmitir."
+        ),
+        "area": "Proceso de Contabilidad y Facturación",
+    },
+    {  # 8. Valor del tributo en nota crédito (CAS07)
+        "palabras_clave": ["cas07"],
+        "titulo": "Rechazo CAS07: El valor del tributo no corresponde (nota crédito)",
+        "causa": (
+            "El valor del tributo informado no corresponde al porcentaje"
+            " aplicado sobre la base imponible; puede ser un problema de"
+            " decimales o de parametrización del impuesto."
+        ),
+        "solucion": (
+            "1. Notificar al proceso de T.I.\n"
+            "2. T.I. valida el decimal o el impuesto del documento."
+        ),
+        "area": "Proceso de T.I.",
+    },
+    {  # 9. Comprobante duplicado (DI2)
+        "palabras_clave": [
+            "error di2",
+            "di2",
+            "ya existe un comprobante con ese mismo tipo y numero",
+        ],
+        "titulo": "Error DI2: Comprobante ya existe (duplicado)",
+        "causa": (
+            "Ya existe un comprobante con el mismo tipo y número enviado a la"
+            " entidad reguladora."
+        ),
+        "solucion": (
+            "1. Validar en comprobantes emitidos si la factura ya fue"
+            " transmitida.\n"
+            "2. Si ya fue emitida, no es necesario retransmitirla.\n"
+            "3. Si no ha sido emitida, volver a generar el insumo y"
+            " retransmitir."
+        ),
+        "area": "Proceso de Facturación",
+    },
+    {  # 10. Fecha de generación distinta a fecha de firma (FAD09e)
+        "palabras_clave": [
+            "fad09e",
+            "fecha de generacion de la factura sea igual a la fecha de firma",
+        ],
+        "titulo": "Rechazo FAD09e: Fecha de generación diferente a la fecha de firma",
+        "causa": (
+            "La factura fue emitida con una fecha posterior a hoy y firmada"
+            " electrónicamente, pero no llegó a la DIAN porque fue rechazada y"
+            " no se corrigió el mismo día."
+        ),
+        "solucion": (
+            "1. Comunicarse con el proceso de T.I.\n"
+            "2. T.I. soluciona el tema de la fecha de la factura."
+        ),
+        "area": "Proceso de T.I.",
+    },
+    {  # 11. Valor del tributo en factura (FAS07)
+        "palabras_clave": ["fas07"],
+        "titulo": "Rechazo FAS07: El valor del tributo no corresponde (factura)",
+        "causa": (
+            "El valor del tributo informado no corresponde al porcentaje"
+            " aplicado sobre la base imponible; puede ser un problema de"
+            " decimales o de parametrización del impuesto."
+        ),
+        "solucion": (
+            "1. Notificar al proceso de T.I.\n"
+            "2. T.I. valida el decimal o el impuesto del documento."
+        ),
+        "area": "Proceso de T.I.",
+    },
+    {  # 12. Error de estructura por salto de línea (VA0)
+        "palabras_clave": [
+            "va0",
+            "no se pudo cargar por error en su estructura",
+        ],
+        "titulo": "Error VA0: Error de estructura por salto de línea en la dirección",
+        "causa": (
+            "La dirección de entrega tiene un salto de línea. Caracteres como"
+            " la coma o el tabulador se toman como salto de línea y rompen la"
+            " estructura del archivo."
+        ),
+        "solucion": (
+            "1. Notificar al proceso de Cartera.\n"
+            "2. Quitar el salto de línea y los caracteres especiales (coma,"
+            " tabulador) de la dirección.\n"
+            "3. Volver a generar el insumo y retransmitir."
+        ),
+        "area": "Proceso de Cartera",
+    },
 ]
 
 
