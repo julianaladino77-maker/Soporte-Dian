@@ -17,6 +17,8 @@ st.write(
 # BASE DE DATOS DE ERRORES
 # Para agregar uno nuevo: copia un bloque { ... }, y cambia sus campos.
 # Las palabras clave no distinguen mayúsculas, tildes ni guiones.
+# Opcional: "detalles": {1: "texto"} agrega un "Más detalle" desplegable
+# debajo del paso 1 de la solución (usa el número del paso que quieras).
 # =====================================================================
 BASE_DE_ERRORES = [
     {  # 1. Código postal
@@ -148,6 +150,20 @@ BASE_DE_ERRORES = [
             "4. Facturación debe quitar la referencia de la factura, volver a"
             " generar el archivo plano y retransmitir."
         ),
+        "detalles": {
+            1: (
+                "Para saber si la factura está aceptada:\n\n"
+                "1. Copia el **CUFE de la factura** referenciada en la nota"
+                " crédito (aparece en la representación gráfica o PDF de la"
+                " factura).\n"
+                "2. Entra a [Buscar documento de la DIAN]"
+                "(https://catalogo-vpfe.dian.gov.co/User/SearchDocument).\n"
+                "3. Pega el CUFE y consulta. Desde julio de 2026 la DIAN puede"
+                " pedir también el NIT del emisor o del receptor.\n"
+                "4. Si la factura aparece validada/aceptada, la nota crédito no"
+                " puede ir con causal de anulación."
+            ),
+        },
         "area": "Proceso de Contabilidad y Facturación",
     },
     {  # 8. Valor del tributo en nota crédito (CAS07)
@@ -286,9 +302,15 @@ if st.button("Diagnosticar Error", type="primary"):
                 with st.container(border=True):
                     st.markdown(f"#### ❌ {item['titulo']}")
                     st.markdown(f"**📋 Detalle / Causa:** {item['causa']}")
-                    # Línea en blanco antes de la lista para que Markdown
-                    # pinte cada paso en su propia línea.
-                    st.markdown("**💡 Solución técnica:**\n\n" + item["solucion"])
+                    st.markdown("**💡 Solución técnica:**")
+                    detalles = item.get("detalles", {})
+                    # Cada paso va en su propia línea; si tiene "detalle",
+                    # se muestra un desplegable justo debajo de ese paso.
+                    for num, paso in enumerate(item["solucion"].split("\n"), start=1):
+                        st.markdown(paso)
+                        if num in detalles:
+                            with st.expander("🔎 Más detalle"):
+                                st.markdown(detalles[num])
                     st.markdown(f"**👥 A quién notificar:** {item['area']}")
         else:
             st.warning(
