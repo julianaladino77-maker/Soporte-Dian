@@ -1,12 +1,13 @@
 import os
 import re
 import unicodedata
+from datetime import datetime
 from urllib.parse import quote
 
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title="Soporte de errores", page_icon="🧾", layout="centered")
+st.set_page_config(page_title="Soporte de errores Juli", page_icon="🧾", layout="centered")
 
 # Empresas que aparecen en el selector (editar aquí para agregar otra).
 EMPRESAS = ["Rotoplast", "Leguz"]
@@ -85,6 +86,22 @@ try:
 except Exception as e:
     st.error(f"No se pudo leer {ARCHIVO}. Revisa que exista y tenga las columnas originales. ({e})")
     st.stop()
+
+with st.sidebar:
+    st.subheader("Estado del catálogo")
+    st.caption(f"Archivo: {ARCHIVO}")
+    st.caption(
+        "Última modificación (hora del servidor): "
+        + datetime.fromtimestamp(os.path.getmtime(ARCHIVO)).strftime("%d/%m/%Y %H:%M")
+    )
+    st.caption(f"Errores activos cargados: {len(df)}")
+    st.dataframe(
+        df.groupby("tema").size().rename("errores"),
+        width="stretch",
+    )
+    if st.button("🔄 Recargar catálogo"):
+        st.cache_data.clear()
+        st.rerun()
 
 col1, col2 = st.columns(2)
 empresa = col1.selectbox("Empresa", EMPRESAS)
