@@ -9,7 +9,7 @@ import streamlit as st
 st.set_page_config(page_title="Soporte de errores", page_icon="🧾", layout="centered")
 
 # Empresas que aparecen en el selector (editar aquí para agregar otra).
-EMPRESAS = ["Rotoplast", "Leguz"]
+EMPRESAS = ["Rotoplast", ""]
 ARCHIVO = "catalogo.xlsx"  # El administrador edita este Excel.
 MAX_PASOS = 6
 
